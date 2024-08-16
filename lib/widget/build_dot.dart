@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class buildDot extends StatelessWidget {
-  const buildDot({
+class BuildDot extends StatelessWidget {
+  const BuildDot({
     super.key,
   });
 

@@ -6,6 +6,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -22,22 +23,22 @@ class _HomePageState extends State<HomePage> {
                 color: const Color.fromARGB(255, 39, 39, 39),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      buildDot(),
-                      buildDot(),
+                      BuildDot(),
+                      BuildDot(),
                     ],
                   ),
-                  const SizedBox(height: 1),
+                  SizedBox(height: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      buildDot(),
-                      buildDot(),
+                      BuildDot(),
+                      BuildDot(),
                     ],
                   )
                 ],
@@ -134,28 +135,93 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
             height: 50, // Hauteur de la ListView
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: SingleChildScrollView(
+            child: const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  buildText(text: "Cappuccino"),
-                  buildText(text: "Espresso"),
-                  buildText(text: "Moccacino"),
-                  buildText(text: "Non Coffee"),
-                  buildText(text: "Mocca"),
-                  buildText(text: "Arabica"),
-                  buildText(text: "Smooth")
+                  BuildText(text: "Cappuccino"),
+                  BuildText(text: "Espresso"),
+                  BuildText(text: "Moccacino"),
+                  BuildText(text: "Non Coffee"),
+                  BuildText(text: "Mocca"),
+                  BuildText(text: "Arabica"),
+                  BuildText(text: "Smooth")
                 ],
               ),
             ),
           ),
+          Container(
+              width: 208,
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: const Color.fromARGB(255, 61, 61, 61),
+              ),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'lib/image/coffee.jpg',
+                    fit: BoxFit.cover,
+                    height: 200,
+                    width: 200,
+                  ),
+                  const Text(
+                    "Cappucino Latte",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "180 ml",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey.shade500),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "\$",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.orange),
+                            ),
+                            TextSpan(
+                              text: "20",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.orange,
+                        ),
+                        child: Icon(Icons.add),
+                      )
+                    ],
+                  ),
+                ],
+              )),
         ],
       ),
     );
