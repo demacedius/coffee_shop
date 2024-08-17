@@ -1,5 +1,6 @@
 import 'package:coffee_shop/widget/build_dot.dart';
 import 'package:coffee_shop/widget/build_text.dart';
+import 'package:coffee_shop/widget/coffee_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: Padding(
@@ -53,26 +55,42 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.grey,
         items: const [
+          /*BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.grey,
+            ),
+            label: '',
+          ),*/
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.shop,
+              color: Colors.grey,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
+            icon: Icon(
+              Icons.favorite,
+              color: Colors.grey,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.grey,
+            ),
             label: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: '',
-          )
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -157,71 +175,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Container(
-              width: 208,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: const Color.fromARGB(255, 61, 61, 61),
-              ),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'lib/image/coffee.jpg',
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: 200,
-                  ),
-                  const Text(
-                    "Cappucino Latte",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "180 ml",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey.shade500),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RichText(
-                        text: const TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "\$",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.orange),
-                            ),
-                            TextSpan(
-                              text: "20",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.orange,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.orange,
-                        ),
-                        child: Icon(Icons.add),
-                      )
-                    ],
-                  ),
-                ],
-              )),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Coffee_card(imagePath: 'lib/image/cappucino.jpg', price: '20'),
+                Coffee_card(imagePath: 'lib/image/latte.jpg', price: '16'),
+                Coffee_card(imagePath: 'lib/image/coffee.jpg', price: '16'),
+                Coffee_card(imagePath: 'lib/image/cappucino.jpg', price: '20'),
+                Coffee_card(imagePath: 'lib/image/latte.jpg', price: '16'),
+                Coffee_card(imagePath: 'lib/image/coffee.jpg', price: '16'),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          const Text(
+            "Special for you",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
     );
