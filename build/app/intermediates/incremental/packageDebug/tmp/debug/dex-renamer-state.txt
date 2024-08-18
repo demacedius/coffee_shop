@@ -1,4 +1,4 @@
-#Sun Aug 18 10:14:57 CEST 2024
+#Sun Aug 18 15:13:42 CEST 2024
 base.0=/home/demacedius/coffee_shop/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/demacedius/coffee_shop/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/home/demacedius/coffee_shop/build/app/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex

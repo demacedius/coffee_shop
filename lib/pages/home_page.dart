@@ -1,4 +1,5 @@
 import 'package:coffee_shop/utils/coffee_descrption.dart';
+import 'package:coffee_shop/widget/bottom_navigation_bar_item.dart';
 import 'package:coffee_shop/widget/build_dot.dart';
 import 'package:coffee_shop/widget/build_text.dart';
 import 'package:coffee_shop/widget/coffee_card.dart';
@@ -13,6 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,38 +65,15 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: selectedIndex,
         selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          /*BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.grey,
-            ),
-            label: '',
-          ),*/
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shop,
-              color: Colors.grey,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.grey,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-              color: Colors.grey,
-            ),
-            label: '',
-          ),
+        unselectedItemColor: Colors.grey.shade600,
+        onTap: _onItemTapped,
+        items: [
+          buildBottomNavigationBarItem(Icons.home, selectedIndex == 0),
+          buildBottomNavigationBarItem(Icons.shop, selectedIndex == 1),
+          buildBottomNavigationBarItem(Icons.favorite, selectedIndex == 2),
+          buildBottomNavigationBarItem(Icons.notifications, selectedIndex == 3),
         ],
       ),
       body: SingleChildScrollView(
@@ -178,47 +164,50 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SingleChildScrollView(
+            const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Coffee_card(
-                    imagePath: 'lib/image/cappucino.jpg',
-                    price: '20',
-                    name: "cappucino",
-                    description: cappucinoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/latte.jpg',
-                    price: '16',
-                    name: "latte",
-                    description: latteDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/coffee.jpg',
-                    price: '16',
-                    name: "coffee",
-                    description: espressoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/cappucino.jpg',
-                    price: '20',
-                    name: "cappucino",
-                    description: cappucinoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/latte.jpg',
-                    price: '16',
-                    name: "latte",
-                    description: latteDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/coffee.jpg',
-                    price: '16',
-                    name: "coffee",
-                    description: espressoDescription,
-                  ),
-                ],
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Row(
+                  children: [
+                    Coffee_card(
+                      imagePath: 'lib/image/cappucino.jpg',
+                      price: '20',
+                      name: "cappucino",
+                      description: cappucinoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/latte.jpg',
+                      price: '16',
+                      name: "latte",
+                      description: latteDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/coffee.jpg',
+                      price: '16',
+                      name: "coffee",
+                      description: espressoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/cappucino.jpg',
+                      price: '20',
+                      name: "cappucino",
+                      description: cappucinoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/latte.jpg',
+                      price: '16',
+                      name: "latte",
+                      description: latteDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/coffee.jpg',
+                      price: '16',
+                      name: "coffee",
+                      description: espressoDescription,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -230,48 +219,51 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Coffee_card(
-                    imagePath: 'lib/image/cappucino.jpg',
-                    price: '20',
-                    name: "cappucino",
-                    description: cappucinoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/latte.jpg',
-                    price: '16',
-                    name: "latte",
-                    description: latteDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/coffee.jpg',
-                    price: '16',
-                    name: "coffee",
-                    description: espressoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/cappucino.jpg',
-                    price: '20',
-                    name: "cappucino",
-                    description: cappucinoDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/latte.jpg',
-                    price: '16',
-                    name: "latte",
-                    description: latteDescription,
-                  ),
-                  Coffee_card(
-                    imagePath: 'lib/image/coffee.jpg',
-                    price: '16',
-                    name: "coffee",
-                    description: espressoDescription,
-                  ),
-                ],
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Row(
+                  children: [
+                    Coffee_card(
+                      imagePath: 'lib/image/cappucino.jpg',
+                      price: '20',
+                      name: "cappucino",
+                      description: cappucinoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/latte.jpg',
+                      price: '16',
+                      name: "latte",
+                      description: latteDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/coffee.jpg',
+                      price: '16',
+                      name: "coffee",
+                      description: espressoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/cappucino.jpg',
+                      price: '20',
+                      name: "cappucino",
+                      description: cappucinoDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/latte.jpg',
+                      price: '16',
+                      name: "latte",
+                      description: latteDescription,
+                    ),
+                    Coffee_card(
+                      imagePath: 'lib/image/coffee.jpg',
+                      price: '16',
+                      name: "coffee",
+                      description: espressoDescription,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

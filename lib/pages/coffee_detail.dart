@@ -68,7 +68,6 @@ class _CoffeeDetailPageState extends State<CoffeeDetailPage> {
                       16, // Just below the status bar
                   left: 16,
                   child: Container(
-                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade800,
                       borderRadius: BorderRadius.circular(16),
@@ -77,7 +76,10 @@ class _CoffeeDetailPageState extends State<CoffeeDetailPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: const Icon(Icons.arrow_back_ios),
+                      icon: const Icon(
+                        Icons.chevron_left,
+                        size: 40,
+                      ),
                       color: Colors.white,
                     ),
                   ),
@@ -87,68 +89,74 @@ class _CoffeeDetailPageState extends State<CoffeeDetailPage> {
           ),
           // Content below the image
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.name,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Descritpion',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    ),
-                    Text(
-                      widget.description,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'Quantity',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: _decrementQuantity,
-                          icon: const Icon(Icons.remove_circle),
-                          color: Colors.orange,
-                        ),
-                        Text(
-                          '$quantity',
-                          style: const TextStyle(color: Colors.orange),
-                        ),
-                        IconButton(
-                          onPressed: _incrementQuantity,
-                          icon: const Icon(Icons.add_circle),
-                          color: Colors.orange,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Total Price: \$${totalPrice.toStringAsFixed(2)}',
-                      style: const TextStyle(color: Colors.orange),
-                    ),
-                  ],
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.name,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Descritpion',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        widget.description,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  const Text(
+                    'Quantity',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: _decrementQuantity,
+                            icon: const Icon(Icons.remove_circle),
+                            color: Colors.orange,
+                          ),
+                          Text(
+                            '$quantity',
+                            style: const TextStyle(color: Colors.orange),
+                          ),
+                          IconButton(
+                            onPressed: _incrementQuantity,
+                            icon: const Icon(Icons.add_circle),
+                            color: Colors.orange,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Total Price: \$${totalPrice.toStringAsFixed(2)}',
+                        style: const TextStyle(color: Colors.orange),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -167,7 +175,6 @@ class _CoffeeDetailPageState extends State<CoffeeDetailPage> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {},
-                child: const Text('Add to Cart'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
                   foregroundColor: Colors.white,
@@ -175,6 +182,7 @@ class _CoffeeDetailPageState extends State<CoffeeDetailPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                child: const Text('Add to Cart'),
               ),
             )
           ],
